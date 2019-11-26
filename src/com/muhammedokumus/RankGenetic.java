@@ -36,6 +36,15 @@ public class RankGenetic extends GeneticFramework {
         i2.calcFitness();
     }
 
+    @Override
+    void loopRecipe() {
+        selection();
+        mutation();
+        mutation();
+        mutation();
+
+    }
+
     /**
      * 2 point cross-over
      * @param i1 individual 1

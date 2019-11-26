@@ -20,7 +20,6 @@ public class Main {
 
 
 
-
         /*
         GeneticFramework geneticFramework = new RouletteGenetic(pool);
         geneticFramework.mutation();

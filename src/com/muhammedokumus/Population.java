@@ -32,6 +32,14 @@ public class Population {
     }
 
 
+    public Double getAverageFitness(){
+        Double totalFitness = 0.0;
+        for(Individual i : individuals)
+            totalFitness += i.fitness;
+        return totalFitness/individuals.size();
+    }
+
+
     /**
      * @return fittest individual in the population
      */

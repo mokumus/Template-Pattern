@@ -37,6 +37,8 @@ public class Individual {
             fitness /= 10;
         if((x1 + x2) > 5 )
             fitness /= 10;
+        if(x1 < 5 && x2 < 5 && (x1 + x2) < 5)
+            fitness *= 3;
 
         return fitness;
     }

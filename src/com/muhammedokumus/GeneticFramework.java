@@ -11,6 +11,7 @@ public abstract class GeneticFramework {
     }
 
     abstract void selection();
+    abstract void loopRecipe();
 
     /**
      * One point cross-over
@@ -76,4 +77,7 @@ public abstract class GeneticFramework {
 
         i.calcFitness();
     }
+
+
+
 }

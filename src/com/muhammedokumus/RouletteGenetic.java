@@ -1,7 +1,6 @@
 package com.muhammedokumus;
 
 import java.util.Random;
-import static java.lang.Math.abs;
 
 public class RouletteGenetic extends GeneticFramework {
 
@@ -26,10 +25,15 @@ public class RouletteGenetic extends GeneticFramework {
         System.out.println("Closest to Point2: " + population.getClosestFitness(randomInt2));
         */
         crossover(population.getClosestFitness(randomInt1), population.getClosestFitness(randomInt2));
+        targetedMutation(population.getLeastFittest());
     }
 
+    @Override
+    void loopRecipe() {
+        selection();
+        mutation();
 
-
+    }
 
 
 }
