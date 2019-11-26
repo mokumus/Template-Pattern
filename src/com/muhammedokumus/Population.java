@@ -32,6 +32,10 @@ public class Population {
     }
 
 
+    /**
+     * Calculate and return the average fitness value of the working population
+     * @return double type avarege fitness value
+     */
     public Double getAverageFitness(){
         Double totalFitness = 0.0;
         for(Individual i : individuals)
@@ -97,6 +101,11 @@ public class Population {
         return minFitIndex;
     }
 
+    /**
+     * Find the individual which is closest to provided fitness level, used for roulette selection
+     * @param f fitness levle
+     * @return individual
+     */
     public Individual getClosestFitness(int f){
         int closestIndex = 0;
         Double closestDiff = abs(abs(f) - abs(individuals.get(0).fitness));

@@ -4,13 +4,27 @@ import java.util.Random;
 
 import static java.lang.Math.abs;
 
+/**
+ * Implements the GeneticFramework using Rank selection
+ */
 public class RankGenetic extends GeneticFramework {
+
+    /**
+     * Defines a framework that will work on the provided population
+     * @param p
+     */
     public RankGenetic(Population p) {
         super(p);
     }
 
 
-    public Individual chooseOnFitness(Population p) {
+    /**
+     * Return a random individual from the provided population
+     * Higher chance to be picked on fitter individuals
+     * @param p population
+     * @return individual
+     */
+    private Individual chooseOnFitness(Population p) {
         Random rand = new Random();
         Double totalFitness = 0.0;
         for (Individual i : p.getIndividuals())
@@ -25,6 +39,10 @@ public class RankGenetic extends GeneticFramework {
         return population.getIndividuals().get(rand.nextInt(population.size));
     }
 
+    /**
+     * Rank based selection, chooses two individuals from working population
+     * Higher chance on fitter individuals
+     */
     @Override
     void selection() {
         Individual i1 = chooseOnFitness(population);
@@ -36,6 +54,9 @@ public class RankGenetic extends GeneticFramework {
         i2.calcFitness();
     }
 
+    /**
+     * Recipe for genetic algorithm to execute each generation
+     */
     @Override
     void loopRecipe() {
         selection();

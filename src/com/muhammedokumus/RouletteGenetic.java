@@ -2,8 +2,15 @@ package com.muhammedokumus;
 
 import java.util.Random;
 
+/**
+ * Implements the GeneticFramework using roulette wheel selection
+ */
 public class RouletteGenetic extends GeneticFramework {
 
+    /**
+     * Defines a framework that will work on the provided population
+     * @param p
+     */
     public RouletteGenetic(Population p) {
         super(p);
     }
@@ -28,11 +35,15 @@ public class RouletteGenetic extends GeneticFramework {
         targetedMutation(population.getLeastFittest());
     }
 
+    /**
+     * Recipe for genetic algorithm to execute each generation
+     */
     @Override
     void loopRecipe() {
         selection();
         mutation();
-
+        mutation();
+        mutation();
     }
 
 

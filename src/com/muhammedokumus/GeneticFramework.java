@@ -3,14 +3,28 @@ package com.muhammedokumus;
 import java.util.Random;
 import static java.lang.Math.abs;
 
+/**
+ * Defines a framework for other GA's
+ */
 public abstract class GeneticFramework {
     Population population;
 
+    /**
+     * Defines a framework that will work on the provided population
+     * @param p
+     */
     public GeneticFramework(Population p){
         this.population = p;
     }
 
+    /**
+     * Selection algorithm
+     */
     abstract void selection();
+
+    /**
+     * Recipe for genetic algorithm to execute each generation
+     */
     abstract void loopRecipe();
 
     /**
@@ -25,10 +39,10 @@ public abstract class GeneticFramework {
         StringBuilder sb2 = new StringBuilder(String.format("%.2f", abs(i2.x1))).append(String.format("%.2f", abs(i2.x2)));
 
         String tmp1 = sb1.substring(0,4);
-        String tmp2 = sb2.substring(4,8);
+        String tmp2 = sb2.substring(0,4);
 
         sb1.replace(0,4, tmp2);
-        sb2.replace(4,8, tmp1);
+        sb2.replace(0,4, tmp1);
 
         i1.x1 = Double.parseDouble(sb1.substring(0,4));
         i1.x2 = Double.parseDouble(sb1.substring(4,8));
@@ -40,17 +54,30 @@ public abstract class GeneticFramework {
         i2.calcFitness();
     }
 
+    /**
+     * Mutates random individual in the working population
+     */
     void mutation(){
         Random rand = new Random();
         int randomIndex = rand.nextInt(population.size);
         Individual randomIndividual = population.getIndividuals().get(randomIndex);
         mutationWrapper(randomIndividual, rand);
     }
+
+    /**
+     * Mutates targeted individual the working population
+     * @param i individual
+     */
     void targetedMutation(Individual i){
         Random rand = new Random();
         mutationWrapper(i, rand);
     }
 
+    /**
+     * Randomized mutating
+     * @param i individual to mutate
+     * @param rand random seed
+     */
     private void mutationWrapper(Individual i, Random rand) {
         int randomInt= rand.nextInt(4);
         Double randomDouble1 = rand.nextDouble();
@@ -77,7 +104,4 @@ public abstract class GeneticFramework {
 
         i.calcFitness();
     }
-
-
-
 }

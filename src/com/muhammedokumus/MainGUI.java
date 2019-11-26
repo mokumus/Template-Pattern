@@ -3,7 +3,6 @@ package com.muhammedokumus;
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +20,6 @@ public class MainGUI extends JFrame implements ActionListener {
         MainGUI swingWorkerRealTime = new MainGUI();
         swingWorkerRealTime.go();
     }
-
-
 
     private void go() {
         // Create Chart
@@ -52,17 +49,18 @@ public class MainGUI extends JFrame implements ActionListener {
     }
 
     private class MySwingWorker extends SwingWorker<Boolean, double[]> {
+        int popSize = 100;
         LinkedList<Double> fifo1 = new LinkedList<Double>();
         LinkedList<Double> fifo2 = new LinkedList<Double>();
         LinkedList<Double> fifo3 = new LinkedList<Double>();
 
-        Population pool1 = new Population(10);
-        Population pool2 = new Population(10);
-        Population pool3 = new Population(10);
+        Population pool1 = new Population(popSize);
+        Population pool2 = new Population(popSize);
+        Population pool3 = new Population(popSize);
 
         GeneticFramework tournamentRun = new TournamentGenetic(pool1);
         GeneticFramework rouletteRun = new RouletteGenetic(pool2);
-        GeneticFramework rankRun = new RouletteGenetic(pool3);
+        GeneticFramework rankRun = new RankGenetic(pool3);
 
         public MySwingWorker() {
             fifo1.add(pool1.getAverageFitness());

@@ -43,6 +43,10 @@ public class Individual {
         return fitness;
     }
 
+    /**
+     * Function to maximize
+     * @return
+     */
     private double func2max(){
         return (20*x1*x2) + (16*x2) - (2*x1*x1) - (x2*x2) - ((x1+x2)*(x1+x2));
     }
