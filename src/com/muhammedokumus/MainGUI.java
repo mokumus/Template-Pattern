@@ -32,7 +32,7 @@ public class MainGUI {
 
     private static double[][] getEvolutionData() {
         Population pool = new Population(100);
-        GeneticFramework geneticFramework = new RankGenetic(pool);
+        GeneticFramework geneticFramework = new TournamentGenetic(pool);
 
         double[] xData = new double[100];
         double[] yData = new double[100];
@@ -40,14 +40,11 @@ public class MainGUI {
         for (int i = 0; i < xData.length; i++) {
 
             geneticFramework.selection();
-            geneticFramework.selection();
-            geneticFramework.selection();
+            geneticFramework.mutation();
+            geneticFramework.mutation();
+            geneticFramework.mutation();
 
-            geneticFramework.mutation();
-            geneticFramework.mutation();
-            geneticFramework.mutation();
-            geneticFramework.mutation();
-            geneticFramework.mutation();
+
 
             xData[i] = i;
             yData[i] = pool.getFittest().fitness;

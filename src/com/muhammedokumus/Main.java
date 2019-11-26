@@ -11,7 +11,7 @@ public class Main {
         System.out.println("Initial Worst: " + pool.getLeastFittest());
 
         Random rand = new Random();
-        GeneticFramework geneticFramework = new RankGenetic(pool);
+        GeneticFramework geneticFramework = new TournamentGenetic(pool);
         geneticFramework.selection();
 
 
