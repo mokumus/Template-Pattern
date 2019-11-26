@@ -1,15 +1,32 @@
 package com.muhammedokumus;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
-        Population pool = new Population(100);
+        Population pool = new Population(10);
         System.out.println(pool.toString());
         System.out.println("Initial Fittest: " + pool.getFittest());
         System.out.println("Initial Worst: " + pool.getLeastFittest());
+
+        Random rand = new Random();
+        GeneticFramework geneticFramework = new RankGenetic(pool);
+        geneticFramework.selection();
+
+
+
+
+
+
+
+
+        /*
         GeneticFramework geneticFramework = new RouletteGenetic(pool);
         geneticFramework.mutation();
         geneticFramework.selection();
+
+
 
 
 
@@ -29,7 +46,7 @@ public class Main {
             System.out.println("GEN" + i +" Fittest: " + pool.getFittest());
             System.out.println("GEN" + i +" Worst: " + pool.getLeastFittest());
         }
-
+        */
 
 
     }

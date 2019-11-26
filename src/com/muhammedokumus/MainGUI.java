@@ -32,7 +32,7 @@ public class MainGUI {
 
     private static double[][] getEvolutionData() {
         Population pool = new Population(100);
-        GeneticFramework geneticFramework = new RouletteGenetic(pool);
+        GeneticFramework geneticFramework = new RankGenetic(pool);
 
         double[] xData = new double[100];
         double[] yData = new double[100];
