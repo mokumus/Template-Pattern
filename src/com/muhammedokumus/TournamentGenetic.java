@@ -55,16 +55,4 @@ public class TournamentGenetic extends GeneticFramework {
         return tempFittest;
     }
 
-    /**
-     * Recipe for genetic algorithm to execute each generation
-     */
-    @Override
-    void loopRecipe() {
-        selection();
-        mutation();
-        mutation();
-        mutation();
-    }
-
-
 }

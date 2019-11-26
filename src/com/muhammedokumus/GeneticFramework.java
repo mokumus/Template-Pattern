@@ -25,7 +25,20 @@ public abstract class GeneticFramework {
     /**
      * Recipe for genetic algorithm to execute each generation
      */
-    abstract void loopRecipe();
+    synchronized void  loopRecipe() {
+        Population currentPopulation = population;
+
+        selection();
+        mutation();
+        mutation();
+        mutation();
+
+
+        if (population.getAverageFitness() < currentPopulation.getAverageFitness()){
+            System.out.println("YO CALM DOWN");
+            population = currentPopulation;
+        }
+    }
 
     /**
      * One point cross-over

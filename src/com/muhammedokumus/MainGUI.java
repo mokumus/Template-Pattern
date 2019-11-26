@@ -49,7 +49,7 @@ public class MainGUI extends JFrame implements ActionListener {
     }
 
     private class MySwingWorker extends SwingWorker<Boolean, double[]> {
-        int popSize = 100;
+        int popSize = 50;
         LinkedList<Double> fifo1 = new LinkedList<Double>();
         LinkedList<Double> fifo2 = new LinkedList<Double>();
         LinkedList<Double> fifo3 = new LinkedList<Double>();
@@ -80,7 +80,7 @@ public class MainGUI extends JFrame implements ActionListener {
                 geneticDataCollector(fifo3, pool3);
 
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     // eat it. caught when interrupt is called
                     System.out.println("MySwingWorker shut down.");
@@ -95,12 +95,12 @@ public class MainGUI extends JFrame implements ActionListener {
             if (fifo.size() > 500)
                 fifo.removeFirst();
 
-            double[] array1 = new double[fifo.size()];
+            double[] array = new double[fifo.size()];
 
             for (int i = 0; i < fifo.size(); i++)
-                array1[i] = fifo.get(i);
+                array[i] = fifo.get(i);
 
-            publish(array1);
+            publish(array);
         }
 
         @Override
@@ -115,8 +115,8 @@ public class MainGUI extends JFrame implements ActionListener {
             long start = System.currentTimeMillis();
             long duration = System.currentTimeMillis() - start;
             try {
-                Thread.sleep(400 - duration); // 40 ms ==> 25fps
-                // Thread.sleep(400 - duration); // 400 ms ==> 2.5fps
+                Thread.sleep(1000 - duration); // 400 ms ==> 2.5fps
+                // Thread.sleep(40 - duration); // 40 ms ==> 25fps
             } catch (InterruptedException e) {
             }
         }

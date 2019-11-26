@@ -54,17 +54,6 @@ public class RankGenetic extends GeneticFramework {
         i2.calcFitness();
     }
 
-    /**
-     * Recipe for genetic algorithm to execute each generation
-     */
-    @Override
-    void loopRecipe() {
-        selection();
-        mutation();
-        mutation();
-        mutation();
-
-    }
 
     /**
      * 2 point cross-over
