@@ -3,6 +3,8 @@ package com.muhammedokumus;
 import java.util.ArrayList;
 import java.util.StringJoiner;
 
+import static java.lang.Math.abs;
+
 /**
  * Population class that hold all the individuals to represent a gene pool
  */
@@ -20,6 +22,15 @@ public class Population {
         }
         this.size = size;
     }
+
+    /**
+     *
+     * @return population as ArrayList
+     */
+    public ArrayList<Individual> getIndividuals() {
+        return individuals;
+    }
+
 
     /**
      * @return fittest individual in the population
@@ -55,6 +66,15 @@ public class Population {
     }
 
     /**
+     *
+     * @return least fittest individual in the population
+     */
+    public Individual getLeastFittest() {
+        return individuals.get(getLeastFittestIndex());
+    }
+
+
+    /**
      * @return index of the least fit individual in the population
      */
     public int getLeastFittestIndex() {
@@ -67,6 +87,20 @@ public class Population {
             }
         }
         return minFitIndex;
+    }
+
+    public Individual getClosestFitness(int f){
+        int closestIndex = 0;
+        Double closestDiff = abs(abs(f) - abs(individuals.get(0).fitness));
+
+        for(int i = 1; i < size; i++){
+            Double tmpDiff = abs(abs(individuals.get(i).fitness) - abs(f));
+            if(tmpDiff < closestDiff){
+                closestDiff = tmpDiff;
+                closestIndex = i;
+            }
+        }
+        return individuals.get(closestIndex);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.muhammedokumus;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.StringJoiner;
 
@@ -10,9 +11,10 @@ public class Individual {
     Double fitness;
     Double x1;
     Double x2;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 
     /**
-     * Creates an individual with 2 random genes that are in range(0,5) double values
+     * Creates an individual with 2 random genes that are in range(0,5) double values, 0 and 5 included
      */
     public Individual() {
         Random rand = new Random();
@@ -27,15 +29,14 @@ public class Individual {
      * @return double fitness value
      */
     public double calcFitness() {
-        fitness = 0.0;
-        if(x1 > 5 || x1 < 0)
-            fitness += -1000;
-        if(x2 > 5 || x2 < 0)
-            fitness += -1000;
-        if((x1 + x2) > 5 )
-            fitness += -1000;
+        fitness = func2max();
 
-        fitness += func2max();
+        if(x1 > 5 || x1 < 0)
+            fitness /= 10;
+        if(x2 > 5 || x2 < 0)
+            fitness /= 10;
+        if((x1 + x2) > 5 )
+            fitness /= 10;
 
         return fitness;
     }
@@ -47,7 +48,7 @@ public class Individual {
     @Override
     public String toString() {
         return new StringJoiner(", ",   "[", "]")
-                .add("x1: " + x1 + ", x2: " + x2 +", f: " + fitness)
+                .add("x1: " + df2.format(x1) + ", x2: " + df2.format(x2) +", f: " + df2.format(fitness))
                 .toString();
     }
 }
